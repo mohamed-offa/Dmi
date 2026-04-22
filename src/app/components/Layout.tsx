@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigate } from "react-router";
 import { motion } from "motion/react";
 import {
   LayoutDashboard,
+  ClipboardList,
   History,
   FlaskConical,
   Pill,
@@ -12,7 +13,8 @@ import {
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { path: "/", label: "Tableau de bord", icon: LayoutDashboard },
+  { path: "/", label: "Vue d'ensemble", icon: LayoutDashboard },
+  { path: "/workflow", label: "Workflow", icon: ClipboardList },
   { path: "/history", label: "Antécédents", icon: History },
   { path: "/labs", label: "Examens Bio", icon: FlaskConical },
   { path: "/prescriptions", label: "Prescriptions", icon: Pill },
