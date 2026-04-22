@@ -1,0 +1,169 @@
+1) Interrogatoire
+
+•Nom:.......................................................   [1][2][3][4][5][6][7][8][9]
+•Prénom:. ......................................................   [1][2][3][4][5][6][7][8][9]
+•Age:. ......................................................ans  [1][2][3][4][5][6][7][8][9]
+•Poids:. ......................................................kg  [1][2][3][4][5][6][7][8][9]
+•Taille: ....................................cm [1][2][3][4][5][6][7][8][9]
+•Nature de l’acte chirurgical:.................................. [1][2][3][4][5][6][7][8][9]
+•Le malade souffre d’une des maladies suivantes ?: 
+...............................................   [1][2][3][4][5][6][7][8][9]
+
+☐ Hypertension artérielle
+☐ Asthme
+☐ Accident vasculaire cérébral
+☐ Diabète
+☐ Insuffisance rénale
+☐ Épilepsie
+☐ Dyslipidémie
+☐ Anémie
+☐ Troubles psychiatriques
+☐ Cardiopathie
+☐ Ulcère gastrique
+☐ Endocrinopathie
+☐ Aucune
+•la présence d’une insuffisance rénale nécessitant une dialyse:    Non □    Oui □ (préciser) ………… [1][2][3][4][5][6][7][8][9]
+ 
+ 
+•Si le patient est sous dialyse identifiez les jours habituels du dialyse: 
+...................................................... [1][2][3][4][5][6][7][8][9]
+Les lundi, mercredi et vendredi □    ...................................................... [1][2][3][4][5][6][7][8][9]
+Les mardi, jeudi et samedi □  ...................................................... [1][2][3][4][5][6][7][8][9]
+
+•La présence d’une fistule artério-veineuse: Non □   Oui □ et si oui son emplacement est:  [1][2][3][4][5][6][7][8][9]
+ Membre superieur Gauche □    Membre superieur Droit  □  
+•Autres maladies à mentionner? 
+ . ...................................................... [1][2][3][4][5][6][7][8][9]
+ 
+•Quels sont les médicaments que le patient est en train de les prendre (préciser le nom du médicament, le nombre de prise et l’horaire de la prise) 
+ .………………………………………………………………………
+ . ............................................................................................................................................... [1][2][3][4][5][6][7][8][9]
+ . ...............................................................................................................................................
+  
+ 
+•Est-ce que le patient a effectué des opérations avant : 
+ Non □    Oui □ (préciser l’opération et la date)  [1][2][3][4][5][6][7][8][9]
+ …………………………………………………………………
+ . ............................................................................................................................................... 
+•Quel est le type de l’anesthésie utilisé pour chaque acte (anesthésie générale,  anesthésie locorégionale, …)
+. ...............................................................................................................................................  . ....... [1][2][3][4][5][6][7][8][9]
+.
+ •Est-ce que le patient avait un recours à une anesthésie
+ Pour une autre raison(accouchement/endoscopie)
+ □  Non ……..  [1][2][3][4][5][6][7][8][9]
+ Oui □ ……….. (préciser) [1][2][3][4][5][6][7][8][9]
+
+•Est-ce que le patient avez rencontré des complications chirurgicales ou anesthésiques :  
+Non □    Oui□  (préciser)  [1][2][3][4][5][6][7][8][9]
+. ...............................................................................................................................................  . ....... [1][2][3][4][5][6][7][8][9]
+.......................................................................................................................... ..................... [1][2][3][4][5][6][7][8][9]
+ .. .. .. ...  [1][2][3][4][5][6][7][8][9]
+• Est-ce que le patient était hospitalisé avant (à part pour être opérer) : Non □    Oui □ (préciser la cause)  [1][2][3][4][5][6][7][8][9]
+. ............................................................................................................................................... 
+
+•Est-ce que le patient présente une allergie pour un médicament : Non □    Oui □ (préciser)  [1][2][3][4][5][6][7][8][9]
+. .......................................................................................................................................
+•Est-ce que le patient fume (ou Neffa) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+Nombre de cigarette par jour…………. Nombre d’année de tabagisme …………. 
+•Est-ce que le patient buve de l’alcool : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que vous présentez un saignement répété : Non □    Oui □ (préciser l’origine)  [1][2][3][4][5][6][7][8][9]
+.......................................................................................................................... .....................
+
+•Est-ce que le patient présente un saignement prolongé lors d’une plaie : Non □    Oui  [1][2][3][4][5][6][7][8][9]
+□  
+•Est-ce que le patient présente des ecchymoses fréquentes sans cause évidente : Non □    Oui □  [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient avait rencontré une hémorragie inhabituelle lors d’une opération (ou lors d’une extraction dentaire…) : Non □    Oui □ (préciser l’opération)  [1][2][3][4][5][6][7][8][9]
+. ............................................................................................................................................
+ Est-ce que le patient avait reçu une transfusion de sang  .
+ avant (lors d’une chirurgie ou autre causse) (préciser la cause)
+.......................................................................................................................... ..................... [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient a quelqu’un dans la famille qui présente un trouble de la coagulation :  
+ Oui □ (préciser le lien avec vous)    □ Non [1][2][3][4][5][6][7][8][9]
+.......................................................................................................................... ..
+•Est-ce que le matient a quelqu’un dans la famille qui présente une maladie musculaire héréditaire : Non □    Oui □ (préciser le lien avec vous)  [1][2][3][4][5][6][7][8][9]
+.......................................................................................................................... ..................... 
+•Est-ce que le patient a quelqu’un dans la famille qui a rencontré un incident en  .18  Oui □ (à préciser)  □ Non : rapport avec l’anesthésie.             [1][2][3][4][5][6][7][8][9]
+.......................................................................................................................... .....................
+• Est-ce que le patient rencontre une difficulté à monter deux étages sans repos : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+ •Est-ce que le patient rencontre une difficulté à monter un étage sans repos .20
+  □ Oui  □ Non  [1][2][3][4][5][6][7][8][9]
+ •Est-ce que vous présentez une dyspnée lors de l’exercice d’un effort : Non □    Oui □ [1][2][3][4][5][6][7][8][9]
+ •Est-ce que le patient présente une douleur thoracique lors de l’exercice d’un effort : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient ronfle la nuit : Non □    parfois □   toujours □    [1][2][3][4][5][6][7][8][9]
+•Quelqu'un a-t-il observé que le matient s’ arrêtie de respirer pendant son sommeil : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Sent-il souvent fatigué, épuisé ou somnolent pendant la journée : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Sent-il des palpitations sans cause évidente : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Présente-il parfois une vertige ou syncope : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+A-t-il une prothèse dentaire : Non □    dents fixe □ dents instables □       [1][2][3][4][5][6][7][8][9]
+•A-t-il une pathologie en rapport avec la colonne vertébrale : Non □    douleur □                           autresproblèmes □ (préciser)    [1][2][3][4][5][6][7][8][9]
+.......................................................................................................................... ..................... 
+Quels sont ses chiffres tensionnels habituels : ...................................................... [1][2][3][4][5][6][7][8][9]
+•Est le patient capable de faire ces soins (par exemple manger, vous habiller, vous laver, aller aux toilettes) :  Non □    Oui □     [1][2][3][4][5][6][7][8][9]
+Marche-t-il à l'intérieur (par exemple vous déplacer autour de votre maison) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Marche-il 1 à 2 bloc de maisons sur un sol plat (par exemple sur environ 200m sur chemin plat) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient peut monter un escalier ou une colline (par exemple un étage d'un escalier) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le  peut   courir sur une courte distance : Non□    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient peut faire des travaux légers à la maison(par exemple nettoyer la poussière, laver les vaisselles) :Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient peut faire des travaux modérés à la maison (par exemple, passer l'aspirateur, balayer le sol, porter les courses) Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient peut faire de gros travaux à la maison (par exemple, soulever ou déplacer des meubles lourds) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient peut faire du jardinage (par exemple ratisser les feuilles, désherber, pousser la tondeuse du gazon) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+• Est-ce que le patient peut avoir des relations sexuelles : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le matient peut participer à des activités récréatives modérées (par exemple, golf, bowling, danse, tennis en double, lancer une balle de baseball) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient peut participer à des sports intenses (par exemple, natation, tennis en simple, football, basket-ball, ski) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que le patient a présenté des nausées et des vomissements après une opération (dans les 24 heures suivant l’opération) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•A-t-il  éprouvé des nausées et des vomissements liés à des problèmes liés au mal des transports : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+•Est-ce que son activité usuelle entraîne soit fatigue, dyspnée, douleurs angineuses ou palpitations : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+Est-ce que le patient est confortable au repos, mais l'activité physique habituelle entraine fatigue, palpitations ou dyspnée :Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+Est-ce que le patient présente une dyspnée, palpitations ou fatigue au repos et en cas d'effort, la gêne augmente : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+A-t-il ressenti des douleurs ou des crampes dans vos jambes lorsque vous marchez, qui disparaissent après que vous vous arrêtez pour vous reposer: Non □    Oui □  [1][2][3][4][5][6][7][8][9]
+•Pourrait-il me dire après quelle distance de marche cette douleur survientelle . Est-ce après : 
+     50 mètres   □         100 mètres   □          plus   □       moins   □       
+...................................................... [1][2][3][4][5][6][7][8][9]
+
+•Est-ce que il a présenté une infection respiratoire dans le mois précédent : Non □    Oui □  [1][2][3][4][5][6][7][8][9]
+Pour les femmes : 
+**Est-ce que elle est enceinte (ou elle peut  l’être) : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+**Est-ce que elle est allaitante : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+**Nombre de grossesse :  .................................... [1][2][3][4][5][6][7][8][9]
+**Nombre d’accouchement : .................................. [1][2][3][4][5][6][7][8][9]
+**Nombre d’enfant vivant : ................................... [1][2][3][4][5][6][7][8][9]
+
+•Pour les enfants : 
+**Né par : voie basse □    césarienne □  ......... [1][2][3][4][5][6][7][8][9]
+
+**Est-ce qu’il est prématuré : Non □    Oui □……….. [1][2][3][4][5][6][7][8][9]
+**Est-ce que les parents sont apparentés : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+**Est-ce qu’il était hospitalisé après la naissance : Non □    Oui □  (préciser la  [1][2][3][4][5][6][7][8][9]
+cause)………………………………………………………………………………………………………… 
+**Est-ce que le développement psychomoteur est normale : Non□    Oui □   [1][2][3][4][5][6][7][8][9]
+**Est-ce qu’il a reçu tous les vaccins nécessaires : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+**Est-ce qu’il a présenté des convulsions fébriles durant l’enfance : Non □    Oui □   [1][2][3][4][5][6][7][8][9]
+**Est-ce que le patient présente des troubles du sommeil (insomnie, sommeil non réparateur) :
+☐ Non
+☐ Oui (préciser) : ______
+________________ [1][2][3][4][5][6][7][8][9]
+**Est-ce que le patient ronfle la nuit de façon habituelle :
+☐ Non
+☐ Parfois
+☐ Toujours
+ [1][2][3][4][5][6][7][8][9]
+**Quelqu’un a-t-il observé que le patient s’arrêtait de respirer pendant son sommeil (apnée du sommeil suspectée) :
+☐ Non
+☐ Oui (préciser) : _____________
+_________ [1][2][3][4][5][6][7][8][9]
+** Est-ce que le patient a effectué des voyages récents (dans les 3 derniers mois) pouvant exposer à un risque infectieux ou particulier :
+☐ Non
+☐ Oui (préciser le pays et la date) : ______________________ [1][2][3][4][5][6][7][8][9]
+** Est-ce que le patient est à jour dans ses vaccinations (grippe, hépatite, COVID-19, autres) :
+☐ Oui
+☐ Non
+Si non, préciser les vaccins manquants : ______________________ [1][2][3][4][5][6][7][8][9]
+**Est-ce que le patient prend actuellement des compléments alimentaires, des produits de phytothérapie ou des remèdes traditionnels :
+☐ Non
+☐ Oui (préciser le produit, la dose et la fréquence) : ______________________ [1][2][3][4][5][6][7][8][9]
+** Est-ce que le patient suit correctement son traitement habituel (compliance thérapeutique) :
+☐ Oui, traitement suivi régulièrement
+☐ Non, traitement irrégulier ou interrompu
+Préciser : ______________________ [1][2][3][4][5][6][7][8][9]
+
+
