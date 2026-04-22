@@ -1,57 +1,43 @@
 import { motion } from "motion/react";
-import { Download, FileText, Microscope, Filter, ChevronDown } from "lucide-react";
+import { Download, FileText, Microscope, ChevronUp } from "lucide-react";
 
 export function LabResults() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300 } },
-  };
+  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
+  const item = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300 } } };
 
   return (
-    <motion.div variants={container} initial="hidden" animate="show" className="max-w-6xl mx-auto space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Examens Biologiques</h1>
-        <div className="flex gap-3">
-          <button className="flex items-center gap-2 bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-xl font-medium shadow-sm hover:bg-slate-50 transition-colors">
-            <Filter className="w-4 h-4" />
-            Filtrer
-          </button>
-          <button className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl font-medium shadow-md hover:bg-indigo-700 transition-colors">
+    <div className="min-h-full bg-[#f8f9fb]">
+      <div className="bg-white border-b border-slate-200/80 sticky top-0 z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <h1 className="text-lg font-bold text-slate-800 tracking-tight">Examens Biologiques</h1>
+          <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-md shadow-indigo-600/20 transition-colors">
             <Microscope className="w-4 h-4" />
-            Nouvelle Demande
+            <span className="hidden sm:inline">Nouvelle Demande</span>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
-        <motion.div variants={item} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/60 overflow-hidden">
-          <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+      <motion.div variants={container} initial="hidden" animate="show" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-5">
+        <motion.div variants={item} className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+          <div className="flex items-center justify-between p-5 border-b border-slate-100">
             <div>
-              <h2 className="text-lg font-bold text-slate-800">Bilan Sanguin Complet</h2>
-              <p className="text-sm text-slate-500 font-medium mt-1">Prescrit par Dr. Dupont • 12 Octobre 2023</p>
+              <h2 className="text-sm font-bold text-slate-800">Bilan Sanguin Complet</h2>
+              <p className="text-xs text-slate-400 mt-0.5">Prescrit par Dr. Dupont · 12 Octobre 2023</p>
             </div>
-            <button className="flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl font-semibold shadow-sm hover:bg-indigo-100 transition-colors">
-              <Download className="w-4 h-4" />
+            <button className="flex items-center gap-2 bg-indigo-50 text-indigo-600 px-3.5 py-2 rounded-xl text-xs font-semibold hover:bg-indigo-100 transition-colors border border-indigo-100">
+              <Download className="w-3.5 h-3.5" />
               PDF
             </button>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left">
               <thead>
-                <tr className="bg-slate-50 text-slate-500 text-sm uppercase tracking-wider">
-                  <th className="px-6 py-4 rounded-tl-xl font-semibold">Examen</th>
-                  <th className="px-6 py-4 font-semibold">Résultat</th>
-                  <th className="px-6 py-4 font-semibold">Unités</th>
-                  <th className="px-6 py-4 rounded-tr-xl font-semibold">Valeurs de Référence</th>
+                <tr className="bg-slate-50/80 text-slate-400 text-[11px] uppercase tracking-wider">
+                  <th className="px-5 py-3 font-semibold">Examen</th>
+                  <th className="px-5 py-3 font-semibold">Résultat</th>
+                  <th className="px-5 py-3 font-semibold">Unités</th>
+                  <th className="px-5 py-3 font-semibold">Valeurs de Référence</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -63,17 +49,17 @@ export function LabResults() {
                   { name: "Triglycérides", result: "1.45", unit: "g/L", ref: "< 1.50", status: "normal" },
                 ].map((row, i) => (
                   <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="px-6 py-4 font-medium text-slate-800">{row.name}</td>
-                    <td className="px-6 py-4">
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-bold text-sm ${
-                        row.status === 'high' ? 'bg-red-50 text-red-600' : 'bg-emerald-50 text-emerald-600'
+                    <td className="px-5 py-3.5 text-sm font-medium text-slate-700">{row.name}</td>
+                    <td className="px-5 py-3.5">
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold ${
+                        row.status === "high" ? "bg-red-50 text-red-600 border border-red-100" : "bg-emerald-50 text-emerald-600 border border-emerald-100"
                       }`}>
                         {row.result}
-                        {row.status === 'high' && <ChevronDown className="w-4 h-4 rotate-180" />}
+                        {row.status === "high" && <ChevronUp className="w-3 h-3" />}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-slate-500">{row.unit}</td>
-                    <td className="px-6 py-4 text-slate-500 text-sm">{row.ref}</td>
+                    <td className="px-5 py-3.5 text-xs text-slate-400">{row.unit}</td>
+                    <td className="px-5 py-3.5 text-xs text-slate-400">{row.ref}</td>
                   </tr>
                 ))}
               </tbody>
@@ -81,23 +67,21 @@ export function LabResults() {
           </div>
         </motion.div>
 
-        <motion.div variants={item} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/60 overflow-hidden opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-not-allowed">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <div className="bg-slate-100 p-3 rounded-2xl text-slate-500">
-                <FileText className="w-6 h-6" />
-              </div>
-              <div>
-                <h2 className="text-lg font-bold text-slate-800">Bilan Hépatique</h2>
-                <p className="text-sm text-slate-500 font-medium mt-1">Prescrit par Dr. Martin • En attente de résultats</p>
-              </div>
+        <motion.div variants={item} className="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 opacity-60 hover:opacity-100 transition-all">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400">
+              <FileText className="w-5 h-5" />
             </div>
-            <span className="bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-sm font-bold">
+            <div className="flex-1">
+              <h2 className="text-sm font-bold text-slate-700">Bilan Hépatique</h2>
+              <p className="text-xs text-slate-400 mt-0.5">Prescrit par Dr. Martin · En attente de résultats</p>
+            </div>
+            <span className="bg-amber-50 text-amber-600 px-3 py-1.5 rounded-lg text-[11px] font-bold border border-amber-100">
               En cours
             </span>
           </div>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
