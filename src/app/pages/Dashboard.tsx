@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronRight, User, Stethoscope, Activity, ClipboardCheck,
   ScrollText, CheckSquare, ActivitySquare, BedDouble, FileCheck, Pill,
-  Check, X, Fingerprint, UserPlus, Edit3, TrendingUp,
+  Check, X, Fingerprint, UserPlus, Edit3, TrendingUp, Loader2, ChevronDown, Users,
 } from "lucide-react";
+import { getPatients, createPatient, getPatientSteps, saveStep, updatePatient } from "../api";
+import type { Patient } from "../api";
 import { ConsultationForm } from "../components/ConsultationForm";
 import { ExamenCliniqueForm } from "../components/ExamenCliniqueForm";
 import { ScoresRisqueForm } from "../components/ScoresRisqueForm";
@@ -70,48 +72,134 @@ export function Dashboard() {
     firstName: "",
     lastName: "",
     id: "---",
+    dbId: 0,
     address: "",
     room: "",
     diagnostic: "",
   });
+  const [allPatients, setAllPatients] = useState<Patient[]>([]);
+  const [showPatientList, setShowPatientList] = useState(false);
+  const [saving, setSaving] = useState(false);
+
+  // Load all patients on mount
+  useEffect(() => {
+    getPatients().then(setAllPatients).catch(() => {});
+  }, []);
 
   const progress = Math.round((completedSteps.length / STEPS.length) * 100);
+
+  const loadPatient = async (patient: Patient) => {
+    setPatientData({
+      name: `${patient.first_name} ${patient.last_name}`,
+      firstName: patient.first_name,
+      lastName: patient.last_name,
+      id: patient.dmi_id,
+      dbId: patient.id,
+      address: patient.address,
+      room: patient.room,
+      diagnostic: patient.diagnostic,
+    });
+    // Load steps
+    try {
+      const steps = await getPatientSteps(patient.id);
+      const completed = steps.filter((s) => s.completed).map((s) => s.step_id);
+      const notes: Record<number, any> = {};
+      steps.forEach((s) => { if (s.completed) notes[s.step_id] = s.data; });
+      setCompletedSteps(completed);
+      setStepNotes(notes);
+    } catch {
+      setCompletedSteps([]);
+      setStepNotes({});
+    }
+    setShowPatientList(false);
+  };
 
   const handleStepClick = (id: number) => {
     if (patientData.id === "---") { setIsModalOpen(true); return; }
     setActiveStepId(id);
   };
 
-  const handleStepSubmit = (e: React.FormEvent) => {
+  const handleStepSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!activeStepId || !patientData.dbId) return;
+    setSaving(true);
+
     const formData = new FormData(e.target as HTMLFormElement);
-    let dataToSave: any;
+    let dataToSave: any = Object.fromEntries(formData.entries());
+
     if (activeStepId === 1) {
-      dataToSave = Object.fromEntries(formData.entries());
       const newName = `${dataToSave.firstName} ${dataToSave.lastName}`.trim();
-      setPatientData((prev) => ({ ...prev, name: newName || "Patient Anonyme", firstName: dataToSave.firstName || "", lastName: dataToSave.lastName || "", id: dataToSave.id || prev.id, address: dataToSave.address || "", room: dataToSave.room || "", diagnostic: dataToSave.diagnostic || "" }));
-    } else {
-      dataToSave = Object.fromEntries(formData.entries());
+      setPatientData((prev) => ({
+        ...prev,
+        name: newName || "Patient Anonyme",
+        firstName: dataToSave.firstName || "",
+        lastName: dataToSave.lastName || "",
+        id: dataToSave.id || prev.id,
+        address: dataToSave.address || "",
+        room: dataToSave.room || "",
+        diagnostic: dataToSave.diagnostic || "",
+      }));
+      // Also update patient in DB
+      await updatePatient(patientData.dbId, {
+        first_name: dataToSave.firstName,
+        last_name: dataToSave.lastName,
+        address: dataToSave.address,
+        room: dataToSave.room,
+        diagnostic: dataToSave.diagnostic,
+      }).catch(() => {});
     }
-    if (activeStepId) {
-      setStepNotes((prev) => ({ ...prev, [activeStepId]: dataToSave }));
-      if (!completedSteps.includes(activeStepId)) setCompletedSteps((prev) => [...prev, activeStepId]);
-      setActiveStepId(null);
+
+    const step = STEPS.find((s) => s.id === activeStepId)!;
+    try {
+      await saveStep(patientData.dbId, activeStepId, {
+        step_title: step.title,
+        phase: step.phase,
+        data: dataToSave,
+      });
+    } catch (err) {
+      console.error("Failed to save step:", err);
     }
+
+    setStepNotes((prev) => ({ ...prev, [activeStepId]: dataToSave }));
+    if (!completedSteps.includes(activeStepId)) setCompletedSteps((prev) => [...prev, activeStepId]);
+    setActiveStepId(null);
+    setSaving(false);
   };
 
-  const handleNewPatient = (e: React.FormEvent) => {
+  const handleNewPatient = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const fullName = formData.get("name") as string;
     const parts = fullName.split(" ");
-    setPatientData({
-      name: fullName || "Patient Anonyme",
-      firstName: parts.length > 1 ? parts[0] : fullName,
-      lastName: parts.length > 1 ? parts.slice(1).join(" ") : "",
-      id: `DMI-${Math.floor(Math.random() * 90000) + 10000}`,
-      address: "", room: "", diagnostic: "",
-    });
+    const firstName = parts.length > 1 ? parts[0] : fullName;
+    const lastName = parts.length > 1 ? parts.slice(1).join(" ") : "";
+
+    try {
+      const patient = await createPatient({ first_name: firstName, last_name: lastName });
+      setPatientData({
+        name: fullName || "Patient Anonyme",
+        firstName,
+        lastName,
+        id: patient.dmi_id,
+        dbId: patient.id,
+        address: "",
+        room: "",
+        diagnostic: "",
+      });
+      setAllPatients((prev) => [patient, ...prev]);
+    } catch (err) {
+      // Fallback to local-only
+      setPatientData({
+        name: fullName || "Patient Anonyme",
+        firstName,
+        lastName,
+        id: `DMI-${Math.floor(Math.random() * 90000) + 10000}`,
+        dbId: 0,
+        address: "",
+        room: "",
+        diagnostic: "",
+      });
+    }
     setCompletedSteps([]);
     setStepNotes({});
     setIsModalOpen(false);
@@ -130,7 +218,43 @@ export function Dashboard() {
             <h1 className="text-lg font-bold text-slate-800 tracking-tight">Tableau de bord</h1>
             <p className="text-xs text-slate-400 -mt-0.5">Workflow anesthésique</p>
           </div>
-          <motion.button
+          <div className="flex items-center gap-2">
+            {/* Patient selector */}
+            {allPatients.length > 0 && (
+              <div className="relative">
+                <button
+                  onClick={() => setShowPatientList(!showPatientList)}
+                  className="flex items-center gap-2 bg-white border border-slate-200 text-slate-600 px-3 py-2 rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors"
+                >
+                  <Users className="w-4 h-4 text-slate-400" />
+                  <span className="hidden sm:inline">Charger patient</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showPatientList ? "rotate-180" : ""}`} />
+                </button>
+                {showPatientList && (
+                  <>
+                    <div className="fixed inset-0 z-10" onClick={() => setShowPatientList(false)} />
+                    <div className="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl border border-slate-200 shadow-xl z-20 max-h-64 overflow-y-auto">
+                      {allPatients.map((p) => (
+                        <button
+                          key={p.id}
+                          onClick={() => loadPatient(p)}
+                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors text-left border-b border-slate-100 last:border-0"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-bold shrink-0">
+                            {p.first_name[0]}{p.last_name[0]}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-slate-700 truncate">{p.first_name} {p.last_name}</p>
+                            <p className="text-[10px] text-slate-400 font-mono">{p.dmi_id}</p>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+            <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsModalOpen(true)}
@@ -139,6 +263,7 @@ export function Dashboard() {
             <UserPlus className="w-4 h-4" />
             <span className="hidden sm:inline">Nouveau Patient</span>
           </motion.button>
+          </div>
         </div>
       </div>
 
@@ -330,10 +455,11 @@ export function Dashboard() {
                 <div className="px-6 py-4 border-t border-slate-100 shrink-0">
                   <button
                     type="submit"
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20"
+                    disabled={saving}
+                    className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20"
                   >
-                    <Check className="w-5 h-5" />
-                    Enregistrer et Valider
+                    {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Check className="w-5 h-5" />}
+                    {saving ? "Enregistrement..." : "Enregistrer et Valider"}
                   </button>
                 </div>
               </form>
